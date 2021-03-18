@@ -1,0 +1,9 @@
+@import "globalVariables.scss";
+
+.banner-container {
+    width: 85vmax;
+    height: 523px;
+    background-color: $pink;
+    border-radius: 28px;
+    display: flex;
+}
