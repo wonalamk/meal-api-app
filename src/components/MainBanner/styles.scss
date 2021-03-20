@@ -1,14 +1,9 @@
 @import "globalVariables.scss";
 
 .banner-container {
-    width: 85vmax;
-    height: 523px;
+    width: 100%;
+    height: 500px;
     background-color: $pink;
     border-radius: 28px;
     display: flex;
-
-    @media (max-width: $min-viewport-width) {
-        width: 90%;
-        height: 40%;
-    }
 }

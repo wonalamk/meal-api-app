@@ -1,7 +1,17 @@
+@import "globalVariables.scss";
 
 .content {
-    width: 93%;
-    display: flex;
-    justify-content: center;
-    padding-top: 90px;
+    width: 100%;
+    padding: 90px 65px 0 65px;
+    overflow: auto;
+
+    .headline {
+        margin: 65px 0 35px 0;
+        font-size: 32px;
+
+        .letter {
+            color: $dark-pink;
+            font-weight: 600;
+        }
+    }
 }

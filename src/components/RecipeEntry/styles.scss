@@ -1,0 +1,54 @@
+@import "globalVariables.scss";
+
+
+.recipe-entry {
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 28px;
+    height: 115px;
+    margin: 20px 0;    
+    font-size: 28px;
+
+    .entry-content {
+        padding: 0 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+
+        .category-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0;
+        }
+
+        .meal-name {
+            font-weight: bold;
+            width: 450px;
+        }
+
+        .meal-category {
+            width: 450px;
+        }
+
+        .meal-area {
+            width: 240px;
+        }
+
+        .button {
+            background-color: $dark-pink;
+            padding: 5px;
+            border-radius: 24px;
+            width: 230px;
+            text-decoration: none;
+
+            .button-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                color: white;
+            }
+        }
+    }
+}
