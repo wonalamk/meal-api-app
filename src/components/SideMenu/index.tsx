@@ -7,12 +7,16 @@ import { ReactComponent as HomeIcon } from '../../static/icons/home.svg';
 import { ReactComponent as PastaIcon } from '../../static/icons/pasta.svg';
 import { ReactComponent as VeganIcon } from '../../static/icons/vegan.svg';
 import { Link } from 'react-router-dom';
-
+import { RouteComponentProps } from 'react-router';
 
 interface Category {
     label: CATEGORIES,
     icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
     url: string
+}
+
+interface MatchParams {
+    category: string;
 }
 
 enum CATEGORIES {
@@ -24,16 +28,10 @@ enum CATEGORIES {
     VEGAN="VEGAN"
 }
 
-interface SideMenuProps {
-    activeCategory?: CATEGORIES;
-}
+const SideMenu = (props: RouteComponentProps<MatchParams>): JSX.Element => {
 
-
-const SideMenu = (props: SideMenuProps): JSX.Element => {
-
-    const {
-        activeCategory = CATEGORIES.HOME
-    } = props;
+    const category = props.match.params.category;
+    const activeCategory =  (category && CATEGORIES[category.toUpperCase() as keyof typeof CATEGORIES]) ?? CATEGORIES.HOME;
 
     const categories : Category[] = [
         {
@@ -44,27 +42,27 @@ const SideMenu = (props: SideMenuProps): JSX.Element => {
         {
             label: CATEGORIES.DESSERTS,
             icon: CupcakeIcon,
-            url: "/recipes/desserts"
+            url: "/recipies/desserts"
         },
         {
             label: CATEGORIES.CHICKEN,
             icon: ChickenIcon,
-            url: "/recipes/chicken"
+            url: "/recipies/chicken"
         },
         {
             label: CATEGORIES.BEEF,
             icon: BeefIcon,
-            url: "/recipes/beef"
+            url: "/recipies/beef"
         },
         {
             label: CATEGORIES.PASTA,
             icon: PastaIcon,
-            url: "/recipes/pasta"
+            url: "/recipies/pasta"
         },
         {
             label: CATEGORIES.VEGAN,
             icon: VeganIcon,
-            url: "/recipes/vegan"
+            url: "/recipies/vegan"
         }
     ];
 
@@ -80,8 +78,7 @@ const SideMenu = (props: SideMenuProps): JSX.Element => {
                 </div>
             </Link>
         )
-    }
-    );
+    });
 
     return (
         <div className="side-menu">

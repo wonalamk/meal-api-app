@@ -6,4 +6,9 @@
     background-color: $pink;
     border-radius: 28px;
     display: flex;
+
+    @media (max-width: $min-viewport-width) {
+        width: 90%;
+        height: 40%;
+    }
 }
