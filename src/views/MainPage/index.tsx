@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import MainBanner from '../../components/MainBanner';
 import RecipeEntry from '../../components/RecipeEntry';
 import './styles.scss';
@@ -10,7 +10,9 @@ const MainPage = (): JSX.Element => {
 
     const [recipes, setRecipes] = useState([]);
     const [randomLetter, setRandomLetter] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const mountedRef = useRef(true);
+
     
     useEffect(() => {
         getRecipesByLetter();
@@ -20,12 +22,21 @@ const MainPage = (): JSX.Element => {
         const letter = alphabet[Math.floor(Math.random() * alphabet.length)].toUpperCase();
         setRandomLetter(letter);
         try {
-            setLoading(true);
-            fetch(apiUrl + letter).then((response) => response.json()).then(data => setRecipes(data.meals));
+            fetch(apiUrl + letter)
+            .then((response) => {
+                if (!mountedRef.current) {
+                    return null;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    setRecipes(data.meals); 
+                    setLoading(false);
+                }
+            });
         } catch (e) {
             console.log(e);
-        } finally {
-            setLoading(false);
         }
     }, [])
 
@@ -33,13 +44,11 @@ const MainPage = (): JSX.Element => {
         <RecipeEntry key={index} idMeal={recipe['idMeal']} strMeal={recipe['strMeal']} strCategory={recipe['strCategory']} strArea={recipe['strArea']}/>
     ) : [];
 
-
-
     return (
         <div className="content">
             <MainBanner/>
             <div className="headline"> Recipes starting with letter <span className="letter">{randomLetter}</span></div>
-            {loading ? <div>Loading</div> : <div>{recipesEntries}</div>}
+            {loading ? (<div className="loading">Loading...</div>) : <div>{recipesEntries}</div>}
         </div>
     )
 }

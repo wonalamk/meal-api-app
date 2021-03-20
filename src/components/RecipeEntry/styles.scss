@@ -8,6 +8,10 @@
     height: 115px;
     margin: 20px 0;    
     font-size: 28px;
+    
+    @media (max-width: $min-viewport-width) {
+        font-size: 16px;
+    }
 
     .entry-content {
         padding: 0 35px;
@@ -17,23 +21,45 @@
         align-items: center;
         height: 100%;
 
+                
+        @media (max-width: $min-viewport-width) {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
         .category-icon {
             width: 100px;
             height: 100px;
-            margin: 0;
+            margin: 0 15px 0 0;
+
+            @media (max-width: $min-viewport-width) {
+                display: none;
+            }
         }
 
         .meal-name {
             font-weight: bold;
-            width: 450px;
+            width: 550px;
+                    
+            @media (max-width: $min-viewport-width) {
+                width: 100%;
+            }
         }
 
         .meal-category {
             width: 450px;
+
+            @media (max-width: $min-viewport-width) {
+                display: none;
+            }
         }
 
         .meal-area {
             width: 240px;
+            @media (max-width: $min-viewport-width) {
+                display: none;
+            }
         }
 
         .button {
@@ -42,6 +68,10 @@
             border-radius: 24px;
             width: 230px;
             text-decoration: none;
+        
+            @media (max-width: $min-viewport-width) {
+                width: 100%;
+            }
 
             .button-content {
                 display: flex;

@@ -7,7 +7,7 @@ import { ReactComponent as VeganIcon } from './static/icons/vegan.svg';
 
 export enum CATEGORIES {
     HOME="HOME",
-    DESSERTS="DESSERTS",
+    DESSERT="DESSERT",
     CHICKEN="CHICKEN",
     BEEF="BEEF",
     PASTA="PASTA",
@@ -24,12 +24,12 @@ export const categoryMapping : Category[] = [
     {
         label: CATEGORIES.HOME,
         icon: HomeIcon,
-        url: "/"
+        url: "/",
     },
     {
-        label: CATEGORIES.DESSERTS,
+        label: CATEGORIES.DESSERT,
         icon: CupcakeIcon,
-        url: "/recipies/desserts"
+        url: "/recipies/dessert"
     },
     {
         label: CATEGORIES.CHICKEN,

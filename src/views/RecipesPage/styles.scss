@@ -5,22 +5,13 @@
     padding: 90px 65px 0 65px;
     overflow: auto;
 
-    .headline {
-        margin: 65px 0 35px 0;
-        font-size: 32px;
-
-            
-        @media (max-width: $min-viewport-width) {
-            font-size: 16px;
-        }
-
-        .letter {
-            color: $dark-pink;
-            font-weight: 600;
-        }
-    }
     
+    @media (max-width: $min-viewport-width) {
+        padding: 10px;
+    }
+
     .loading {
+        height: 100%;
         width: 100%;
         font-size: 48px;
         display: flex;

@@ -8,13 +8,18 @@ import { Link } from 'react-router-dom';
 export interface RecipeEntryProps {
     idMeal: string;
     strMeal: string;
-    strCategory: string;
-    strArea: string;
+    strCategory?: string;
+    strArea?: string;
+    showCategory?: boolean;
 }
 
 const RecipeEntry: React.FC<RecipeEntryProps> = (props): JSX.Element => {
-    const category = categoryMapping.find(i => i.label === props.strCategory.toUpperCase());
-    console.log(category)
+    const category = categoryMapping.find(i => i.label === props.strCategory?.toUpperCase());
+    
+    const {
+        showCategory = true
+    } = props;
+
     return (
         <div className="recipe-entry">
             <div className="entry-content">
@@ -25,7 +30,7 @@ const RecipeEntry: React.FC<RecipeEntryProps> = (props): JSX.Element => {
                     {props.strMeal}
                 </div>
                 <div className="meal-category">
-                    {props.strCategory}
+                    {showCategory ? props.strCategory : ''}
                 </div>
                 <div className="meal-area">
                     {props.strArea}
