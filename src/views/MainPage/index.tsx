@@ -47,9 +47,13 @@ const MainPage: React.FC = (): JSX.Element => {
 
     return (
         <div className="content">
-            <MainBanner/>
+            <MainBanner sectionId="recipes"/>
             <div className="headline"> Recipes starting with letter <span className="letter">{randomLetter}</span></div>
-            {loading ? (<div className="loading">Loading...</div>) : (recipesEntries ?? <div>No recipes starting with letter {randomLetter}</div>)}
+            <div id="recipes">
+                {loading ? 
+                (<div className="loading">Loading...</div>) : 
+                (recipesEntries ?? <div>No recipes starting with letter {randomLetter}</div>)}
+            </div>
         </div>
     )
 }

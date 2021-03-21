@@ -14,7 +14,7 @@ const App = (): JSX.Element => {
       <Router>
         <Switch>
           <Route exact path="/" component={withSideMenu(MainPage)} />
-          <Route path="/recipies/:category" component={withSideMenu(RecipesPage)}/>
+          <Route path="/recipes/:category" component={withSideMenu(RecipesPage)}/>
           <Route path="/recipe/:id" component={withSideMenu(RecipeDetailsPage)}/>
           <Route component={withSideMenu(ErrorPage)}/>
         </Switch>

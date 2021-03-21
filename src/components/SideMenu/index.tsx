@@ -13,7 +13,8 @@ interface MatchParams {
 const SideMenu: React.FC<RouteComponentProps<MatchParams>> = (props): JSX.Element => {
 
     const category = props.match.params.category;
-    const activeCategory =  (category && CATEGORIES[category.toUpperCase() as keyof typeof CATEGORIES]) ?? CATEGORIES.HOME;
+    const isHome = window.location.pathname === '/';
+    const activeCategory =  (category && CATEGORIES[category.toUpperCase() as keyof typeof CATEGORIES]) ?? (isHome ? CATEGORIES.HOME : '');
 
     const menuItems = categoryMapping.map((cat, index) => {
         const activeClass = (activeCategory && activeCategory === cat.label) ? ' active' : '';

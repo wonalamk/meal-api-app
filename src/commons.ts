@@ -29,27 +29,27 @@ export const categoryMapping : Category[] = [
     {
         label: CATEGORIES.DESSERT,
         icon: CupcakeIcon,
-        url: '/recipies/dessert'
+        url: '/recipes/dessert'
     },
     {
         label: CATEGORIES.CHICKEN,
         icon: ChickenIcon,
-        url: '/recipies/chicken'
+        url: '/recipes/chicken'
     },
     {
         label: CATEGORIES.BEEF,
         icon: BeefIcon,
-        url: '/recipies/beef'
+        url: '/recipes/beef'
     },
     {
         label: CATEGORIES.PASTA,
         icon: PastaIcon,
-        url: '/recipies/pasta'
+        url: '/recipes/pasta'
     },
     {
         label: CATEGORIES.VEGAN,
         icon: VeganIcon,
-        url: '/recipies/vegan'
+        url: '/recipes/vegan'
     }
 ];
 
