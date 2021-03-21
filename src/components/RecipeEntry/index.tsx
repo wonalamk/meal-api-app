@@ -14,16 +14,16 @@ const RecipeEntry: React.FC<RecipeEntryProps> = (props): JSX.Element => {
     return (
         <div className="recipe-entry">
             <div className="entry-content">
-                <div className="category-icon">
+                <div data-testid="category-icon" className="category-icon">
                     {category ? <category.icon/> : <PlateIcon/>}
                 </div>
-                <div className="meal-name">
+                <div data-testid="meal-name" className="meal-name">
                     {props.strMeal}
                 </div>
-                <div className="meal-category">
+                <div data-testid="meal-category" className="meal-category">
                     {showCategory ? props.strCategory : ''}
                 </div>
-                <div className="meal-area">
+                <div data-testid="meal-area" className="meal-area">
                     {props.strArea}
                 </div>
                 <Link className="button" to={`/recipe/${props.idMeal}`}>

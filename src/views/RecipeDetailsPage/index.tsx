@@ -57,7 +57,7 @@ const RecipeDetailsPage: React.FC<RouteComponentProps<MatchParams>> = (props) =>
             }
         }
         setIngredientList(ingredientsEntries);
-    }, [recipe])
+    }, [recipe]);
     
     const recipeContent = (
         <>
