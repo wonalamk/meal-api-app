@@ -18,10 +18,6 @@ const RecipesPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
     const apiUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
     const category = props.match.params.category ?? CATEGORIES.DESSERT;
 
-    useEffect(() => {
-        getRecipesByCategory();
-    }, [category]);
-
     const getRecipesByCategory = useCallback(async () => {
         setLoading(true);
         try {
@@ -41,7 +37,11 @@ const RecipesPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
         } catch (e) {
             console.log(e);
         }
-    }, [category])
+    }, [category]);
+
+    useEffect(() => {
+        getRecipesByCategory();
+    }, [category, getRecipesByCategory]);
 
     useEffect(() => {
         let entries;
@@ -51,7 +51,7 @@ const RecipesPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
             );
         }
         setRecipeEntries(entries);
-    }, [recipes]);    
+    }, [category, recipes]);    
 
     return (
        <div className="content">

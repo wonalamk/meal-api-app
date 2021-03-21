@@ -19,10 +19,6 @@ const RecipeDetailsPage: React.FC<RouteComponentProps<MatchParams>> = (props) =>
     const ingredientKey = 'strIngredient'
     const measureKey = 'strMeasure';
 
-    useEffect(() => {
-        getRecipeById();
-    }, [mealId]);
-
     const getRecipeById = useCallback(async () => {
         setLoading(true);
         try {
@@ -43,6 +39,10 @@ const RecipeDetailsPage: React.FC<RouteComponentProps<MatchParams>> = (props) =>
             console.log(e);
         }
     }, [mealId])
+
+    useEffect(() => {
+        getRecipeById();
+    }, [getRecipeById, mealId]);
         
     useEffect(() => {
         const ingredientsEntries = [];

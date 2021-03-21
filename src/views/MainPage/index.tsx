@@ -6,19 +6,15 @@ import './styles.scss';
 
 const MainPage: React.FC = (): JSX.Element => {
 
-    const alphabet = 'abcdefghijklmnoprstvwyz'
+    const alphabet = 'abcdefghijklmnoprstuvwxyz'
     const apiUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
     const [recipes, setRecipes] = useState<RecipeEntryProps[]>();
-    const [randomLetter, setRandomLetter] = useState("");
+    const [randomLetter, setRandomLetter] = useState('');
     const [loading, setLoading] = useState(true);
     const mountedRef = useRef(true);
 
     
-    useEffect(() => {
-        getRecipesByLetter();
-    }, []);
-
     const getRecipesByLetter = useCallback(async () => {
         const letter = alphabet[Math.floor(Math.random() * alphabet.length)].toUpperCase();
         setRandomLetter(letter);
@@ -41,15 +37,19 @@ const MainPage: React.FC = (): JSX.Element => {
         }
     }, [])
 
+    useEffect(() => {
+        getRecipesByLetter();
+    }, [getRecipesByLetter]);
+
     const recipesEntries = recipes ? recipes.map((recipe, index) => 
         <RecipeEntry key={index} idMeal={recipe.idMeal} strMeal={recipe.strMeal} strCategory={recipe.strCategory} strArea={recipe.strArea}/>
-    ) : [];
+    ) : null;
 
     return (
         <div className="content">
             <MainBanner/>
             <div className="headline"> Recipes starting with letter <span className="letter">{randomLetter}</span></div>
-            {loading ? (<div className="loading">Loading...</div>) : <div>{recipesEntries}</div>}
+            {loading ? (<div className="loading">Loading...</div>) : (recipesEntries ?? <div>No recipes starting with letter {randomLetter}</div>)}
         </div>
     )
 }
