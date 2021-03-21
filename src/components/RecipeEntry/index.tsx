@@ -1,17 +1,8 @@
 import React from 'react';
-import { categoryMapping } from '../../commons';
+import { categoryMapping, RecipeEntryProps } from '../../commons';
 import './styles.scss';
 import { ReactComponent as PlateIcon } from '../../static/icons/plate.svg';
 import { Link } from 'react-router-dom';
-
-
-export interface RecipeEntryProps {
-    idMeal: string;
-    strMeal: string;
-    strCategory?: string;
-    strArea?: string;
-    showCategory?: boolean;
-}
 
 const RecipeEntry: React.FC<RecipeEntryProps> = (props): JSX.Element => {
     const category = categoryMapping.find(i => i.label === props.strCategory?.toUpperCase());

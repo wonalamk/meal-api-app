@@ -5,6 +5,7 @@ import MainPage from './views/MainPage';
 import ErrorPage from './views/ErrorPage';
 import withSideMenu from './components/SideMenu/SideMenuHOC';
 import RecipesPage from './views/RecipesPage';
+import RecipeDetailsPage from './views/RecipeDetailsPage';
 
 
 const App = (): JSX.Element => {
@@ -14,7 +15,8 @@ const App = (): JSX.Element => {
         <Switch>
           <Route exact path="/" component={withSideMenu(MainPage)} />
           <Route path="/recipies/:category" component={withSideMenu(RecipesPage)}/>
-          <Route component={ErrorPage}/>
+          <Route path="/recipe/:id" component={withSideMenu(RecipeDetailsPage)}/>
+          <Route component={withSideMenu(ErrorPage)}/>
         </Switch>
       </Router>
     </div>

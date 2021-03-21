@@ -10,7 +10,7 @@ interface MatchParams {
     category: string;
 }
 
-const SideMenu = (props: RouteComponentProps<MatchParams>): JSX.Element => {
+const SideMenu: React.FC<RouteComponentProps<MatchParams>> = (props): JSX.Element => {
 
     const category = props.match.params.category;
     const activeCategory =  (category && CATEGORIES[category.toUpperCase() as keyof typeof CATEGORIES]) ?? CATEGORIES.HOME;

@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { RecipeEntryProps } from '../../commons';
 import MainBanner from '../../components/MainBanner';
 import RecipeEntry from '../../components/RecipeEntry';
 import './styles.scss';
 
-const MainPage = (): JSX.Element => {
+const MainPage: React.FC = (): JSX.Element => {
 
     const alphabet = 'abcdefghijklmnoprstvwyz'
     const apiUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState<RecipeEntryProps[]>();
     const [randomLetter, setRandomLetter] = useState("");
     const [loading, setLoading] = useState(true);
     const mountedRef = useRef(true);
@@ -41,7 +42,7 @@ const MainPage = (): JSX.Element => {
     }, [])
 
     const recipesEntries = recipes ? recipes.map((recipe, index) => 
-        <RecipeEntry key={index} idMeal={recipe['idMeal']} strMeal={recipe['strMeal']} strCategory={recipe['strCategory']} strArea={recipe['strArea']}/>
+        <RecipeEntry key={index} idMeal={recipe.idMeal} strMeal={recipe.strMeal} strCategory={recipe.strCategory} strArea={recipe.strArea}/>
     ) : [];
 
     return (

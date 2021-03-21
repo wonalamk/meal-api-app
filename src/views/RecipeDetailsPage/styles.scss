@@ -1,0 +1,83 @@
+@import "globalVariables.scss";
+
+.recipe-details {
+    width: 85%;
+    padding: 90px 65px 0 65px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: $min-viewport-width) {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .loading {
+        height: 100%;
+        width: 100%;
+        font-size: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        @media (max-width: $min-viewport-width) {
+            width: 100%;
+        }
+
+        > div {
+            margin-bottom: 35px;
+        }
+
+        .recipe-name {
+            font-size: 48px;
+        }
+        
+        .section-header {
+            font-size: 32px;
+        }
+
+        .ingredients {
+            li {
+                font-weight: bold;
+
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .instructions {
+            white-space: pre-wrap;
+        }
+    }
+
+    .right-side {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        position: sticky;
+
+        @media (max-width: $min-viewport-width) {
+            width: 85%;
+            position: inherit;
+        }
+        
+        .photo {
+            width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+    
+}

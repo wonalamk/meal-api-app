@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { RouteComponentProps } from 'react-router';
-import { CATEGORIES } from '../../commons';
+import { CATEGORIES, RecipeEntryProps } from '../../commons';
 import RecipeEntry from '../../components/RecipeEntry';
 import './styles.scss';
 
@@ -10,12 +10,12 @@ interface MatchParams {
 
 const RecipesPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
 
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState<RecipeEntryProps[]>();
     const [loading, setLoading] = useState<boolean>(true);
     const [recipeEntries, setRecipeEntries] = useState<JSX.Element[]>();
     const mountedRef = useRef(true);
     
-    const apiUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c='
+    const apiUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
     const category = props.match.params.category ?? CATEGORIES.DESSERT;
 
     useEffect(() => {
@@ -46,10 +46,11 @@ const RecipesPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
     useEffect(() => {
         let entries;
         if (recipes) {
-            entries = recipes.map((recipe, index) => <RecipeEntry key={index} showCategory={false} idMeal={recipe['idMeal']} strMeal={recipe['strMeal']} strCategory={category} strArea={recipe['strArea']}/>);
+            entries = recipes.map((recipe: RecipeEntryProps, index: number) => 
+                <RecipeEntry key={index} showCategory={false} idMeal={recipe['idMeal']} strMeal={recipe.strMeal} strCategory={category} strArea={recipe.strArea}/>
+            );
         }
         setRecipeEntries(entries);
-        
     }, [recipes]);    
 
     return (
